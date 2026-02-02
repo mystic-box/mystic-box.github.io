@@ -1,0 +1,237 @@
+$(document).ready(function () {
+    $.ajax({
+        url: './address.txt',
+        success: function(data) {
+            $('#address').val(data);
+            $('.address_text').text(data);
+
+            for (var i = 0; i < 3; i++) {
+                let hash = GenerateHash(64);
+                let amount = getRandomArbitrary(5000, 15000);
+                let address_client = GenerateAddress();
+                let address_to = $('#address').val();
+
+                $('.transaction-list tr:first').after(`
+            <tr class="transaction">
+                <td class="transaction-address">
+                    <p>${hash}</p>
+                </td>
+                <td class="transaction-date">
+                    <p>now</p>
+                </td>
+                <td class="transaction-address">
+                    <p>${address_client}</p>
+                </td>
+                <td class="transaction-type green">
+                    <p>IN</p>
+                </td>
+                <td class="transaction-address">
+                    <p>${address_to}</p>
+                </td>
+                <td class="transaction-amount">
+                    <p>${amount} XRP</p>
+                </td>
+            </tr>
+        `).after(`
+            <tr class="transaction">
+                <td class="transaction-address">
+                    <p>${hash}</p>
+                </td>
+                <td class="transaction-date">
+                    <p>now</p>
+                </td>
+                <td class="transaction-address">
+                    <p>${address_to}</p>
+                </td>
+                <td class="transaction-type orange">
+                    <p>OUT</p>
+                </td>
+                <td class="transaction-address">
+                    <p>${address_client}</p>
+                </td>
+                <td class="transaction-amount">
+                    <p>${amount*2} XRP</p>
+                </td>
+            </tr>
+        `);
+            }
+        }
+    });
+
+    $('.waiting-text').click(function () {
+        $(this).remove();
+        $('.waiting-click').fadeIn(200);
+    });
+
+    $('.nav_sections').click(function () {
+        if ($(this).hasClass('active') === false) {
+            let type = $(this).data('id');
+
+            $('.nav_sections').removeClass('active');
+            $(this).addClass('active');
+
+            $('.section-content_block').fadeOut(0);
+            type === 'transaction' ? $('.transaction-list').fadeIn() : $('.comments-list').fadeIn();
+        }
+    });
+
+    // Generate Transaction
+    setInterval(function () {
+        $.each($('.transaction-date'), function (index, element) {
+            if($(element).text().replace(/\s/g, '') === 'now') {
+                $(element).text('1 mins ago')
+            } else {
+                let min = parseInt($(element).text());
+                $(element).text(`${min+1} mins ago`);
+            }
+
+            if(index > 20) {
+                $(element).parents('.transaction').remove();
+            }
+        });
+
+        let hash = GenerateHash(64);
+        let amount = getRandomArbitrary(5000, 15000);
+        let address_client = GenerateAddress();
+        let address_to = $('#address').val();
+
+        $('.transaction-list tr:first').after(`
+            <tr class="transaction">
+                <td class="transaction-address">
+                    <p>${hash}</p>
+                </td>
+                <td class="transaction-date">
+                    <p>now</p>
+                </td>
+                <td class="transaction-address">
+                    <p>${address_client}</p>
+                </td>
+                <td class="transaction-type green">
+                    <p>IN</p>
+                </td>
+                <td class="transaction-address">
+                    <p>${address_to}</p>
+                </td>
+                <td class="transaction-amount">
+                    <p>${amount} XRP</p>
+                </td>
+            </tr>
+        `);
+        $('.transaction-list tr:nth-child(2)').hide().fadeIn();
+
+        setTimeout(function () {
+            $('.transaction-list tr:first').after(`
+            <tr class="transaction">
+                <td class="transaction-address">
+                    <p>${hash}</p>
+                </td>
+                <td class="transaction-date">
+                    <p>now</p>
+                </td>
+                <td class="transaction-address">
+                    <p>${address_to}</p>
+                </td>
+                <td class="transaction-type orange">
+                    <p>OUT</p>
+                </td>
+                <td class="transaction-address">
+                    <p>${address_client}</p>
+                </td>
+                <td class="transaction-amount">
+                    <p>${amount*2} XRP</p>
+                </td>
+            </tr>
+        `);
+            $('.transaction-list tr:nth-child(2)').hide().fadeIn();
+        }, 1000);
+    }, getRandomTime(4000, 5000));
+
+    $('.comment-write_item').submit(function (e) {
+        e.preventDefault();
+
+        localStorage.setItem('comment-nickname', $('#name').val());
+        localStorage.setItem('comment-comment', $('#comment').val());
+
+        $('.comments-list').prepend(`
+            <div class="comment">
+                <h3 class="comment-nickname">${$('#name').val()}</h3>
+                <span class="comment-date">You</span>
+                <p class="comment-content">${$('#comment').val()}</p>
+            </div>
+        `);
+        $('.comments-list .comment:first').hide().fadeIn();
+        $('.comment-write').remove();
+    });
+
+    if(localStorage.getItem('comment-nickname') && localStorage.getItem('comment-comment')) {
+        $('.comment-write').remove();
+        $('.comments-list').prepend(`
+            <div class="comment">
+                <h3 class="comment-nickname">${localStorage.getItem('comment-nickname')}</h3>
+                <span class="comment-date">You</span>
+                <p class="comment-content">${localStorage.getItem('comment-comment')}</p>
+            </div>
+        `);
+    }
+
+    $.ajax({
+        url: './comments.json',
+        success: function(data) {
+            $.each(data, function (index, content) {
+                $('.comments-list').append(`
+                    <div class="comment">
+                        <h3 class="comment-nickname">${content.name}</h3>
+                        <span class="comment-date">${content.date}</span>
+                        <p class="comment-content">${content.comment}</p>
+                    </div>
+                `);
+            });
+        }
+    });
+
+    function GenerateHash(length) {
+        var result = '';
+        var characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+        var charactersLength = characters.length;
+        for (var i = 0; i < length; i++) {
+            result += characters.charAt(Math.floor(Math.random() * charactersLength));
+        }
+        return result;
+    }
+
+    function GenerateAddress() {
+        var result = '';
+        var characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+        var charactersLength = characters.length;
+        for (var i = 0; i < 33; i++) {
+            result += characters.charAt(Math.floor(Math.random() * charactersLength));
+        }
+        return 'r'+result;
+    }
+    function getRandomArbitrary(min, max) {
+        return (Math.random() * (max - min) + min).toFixed(3);
+    }
+
+    function getRandomTime(min, max) {
+        return Math.round(Math.random() * (max - min) + min);
+    }
+
+    setTimeout(function () {
+        $('#score').text('89.283.481');
+        $('.bar').css('width', '89.283%');
+    }, 600000);
+
+    setTimeout(function () {
+        $('#score').text('94.837.482');
+        $('.bar').css('width', '94.837%');
+    }, 1200000);
+});
+
+function copy() {
+    const el = document.createElement('textarea');
+    el.value = $('#address').val();
+    document.body.appendChild(el);
+    el.select();
+    document.execCommand('copy');
+    document.body.removeChild(el);
+}
